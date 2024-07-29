@@ -1,0 +1,46 @@
+<form class="checkout_container" [formGroup]="checkoutForm">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" />
+  </div>
+  <div>
+    <label for="address">Address:</label>
+    <input id="address" formControlName="address" />
+  </div>
+  <div>
+    <label for="paymentMethod">Payment Method:</label>
+    <select id="paymentMethod" formControlName="paymentMethod">
+      <option value="creditCard">Credit Card</option>
+      <option value="paypal">PayPal</option>
+    </select>
+  </div>
+
+  <!-- Поля для ввода данных кредитной карты, отображаются только если выбран "Credit Card" -->
+  <div
+    class="credit_card"
+    *ngIf="checkoutForm.get('paymentMethod')?.value === 'creditCard'"
+  >
+    <div>
+      <label for="cardNumber">Card Number:</label>
+      <input id="cardNumber" formControlName="cardNumber" />
+    </div>
+    <div>
+      <label for="expiryDate">Expiry Date (MM/YY):</label>
+      <input
+        id="expiryDate"
+        formControlName="expiryDate"
+        maxlength="5"
+        (input)="formatExpiryDate($event)"
+        placeholder="MM/YY"
+      />
+    </div>
+    <div>
+      <label for="cvv">CVV:</label>
+      <input id="cvv" formControlName="cvv" />
+    </div>
+  </div>
+
+  <button type="submit" class="place_order" [disabled]="!checkoutForm.valid">
+    Place Order
+  </button>
+</form>

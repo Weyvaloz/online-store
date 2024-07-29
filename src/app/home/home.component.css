@@ -1,0 +1,12 @@
+.paginator {
+  display: flex;
+}
+.add-product-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000; /* Ensure the button is above other elements */
+}
+.search {
+  padding: 7px;
+}

@@ -1,0 +1,38 @@
+.wrapper {
+  width: 250px;
+  padding: 20px;
+}
+img {
+  object-fit: contain;
+  border-radius: 15px;
+  background-color: grey;
+  width: 100%;
+}
+.title {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.price-label {
+  font-weight: 300;
+  font-size: 1rem;
+}
+.price {
+  font-weight: 500;
+  font-size: 1rem;
+}
+.add_to_cart {
+  font-size: 17px;
+  padding: 10px;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+}
+.add_to_cart:hover {
+  background-color: rgb(240, 240, 240);
+}
+.product_img {
+  object-fit: cover;
+  border-radius: 15px;
+  background-color: grey;
+  width: 210px;
+  height: 210px;
+}

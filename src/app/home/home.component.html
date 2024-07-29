@@ -1,0 +1,66 @@
+<div class="column gap-2 search">
+  <input
+    type="text"
+    pInputText
+    placeholder="Search products"
+    (input)="onSearch($event)"
+  />
+  <p-table [value]="filteredProducts" *ngIf="searchQuery.trim().length > 0">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Rating</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <p-rating
+            [(ngModel)]="product.rating"
+            [readonly]="true"
+            [cancel]="false"
+          ></p-rating>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <div class="row wrap gap-1 justify-center">
+    <app-product
+      *ngFor="let product of products"
+      [product]="product"
+      (edit)="toggleEditPopup($event)"
+      (delete)="toggleDeletePopup($event)"
+    ></app-product>
+  </div>
+  <p-paginator
+    class="paginator justify-center"
+    (onPageChange)="onPageChange($event)"
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="[5, 10, 20, 30]"
+  ></p-paginator>
+
+  <app-edit-popup
+    [product]="selectedProduct"
+    [(display)]="displayEditPopup"
+    (confirm)="onConfirmEdit($event)"
+    header="Edit product"
+    #paginator
+  ></app-edit-popup>
+  <app-edit-popup
+    [(display)]="displayAddPopup"
+    (confirm)="onConfirmAdd($event)"
+    header="Add product"
+  ></app-edit-popup>
+</div>
+<button
+  type="button"
+  pButton
+  icon="pi pi-plus"
+  (click)="toggleAddPopup()"
+  label="Add product"
+  class="add-product-button"
+></button>

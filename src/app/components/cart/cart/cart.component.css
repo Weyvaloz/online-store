@@ -1,0 +1,22 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.delete_btn {
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 7px;
+  background: 0 0;
+  box-shadow: none;
+  border: 1px solid rgb(170, 170, 170);
+}
+.procees_to_checkout {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: none;
+  border: 1px solid rgb(170, 170, 170);
+  background-color: transparent;
+  font-family: "Oswald", sans-serif;
+}
